@@ -12,3 +12,10 @@
     *  Async → Register a listner for callback
  * It is completely up to the RPC
     * It also depends on the RPC
+
+## RPC - Types
+
+ * Unary.
+ * Server-streaming.
+ * Client-streaming.
+ * Bi-directional-streaming.
