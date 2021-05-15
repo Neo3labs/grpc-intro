@@ -74,3 +74,12 @@ The following is a litmus test that may help you decide between __INVALID_ARGUME
  * Single
    * More efficient than streaming RPC
    * Size is small
+
+## gRPC - Deadline
+
+  * Timeout for an RPC to complete!
+
+## gRPC - Interceptor
+
+ * We can intercept RPC's both at client and server side.
+ * To handle Cross-cutting Concerns.
