@@ -62,3 +62,15 @@ The following is a litmus test that may help you decide between __INVALID_ARGUME
  * Use __OUT_OF_RANGE__ if a value is out of range due to the state of the system. For example, the start_date is before start_date_restrict.
  * Use __FAILED_PRECONDITION__ if the value is invalid due to the state of the system, but isn't an __OUT_OF_RANGE__ value.
 
+## Response - Streaming vs Single
+
+ * Streaming
+   * Size - Potentialy large/unknown
+     * Ex: Pagination
+   * Receiving side might take too much time to process.
+     * File upload
+   * More efficient than multiple RPC calls.
+   * Bi-Directional Stream -> Client/Server streams are completly independent
+ * Single
+   * More efficient than streaming RPC
+   * Size is small
