@@ -1,16 +1,23 @@
-package com.sb.server;
+package com.sb.server.deadline;
 
+import com.google.common.util.concurrent.Uninterruptibles;
 import com.sb.models.*;
+import com.sb.server.BankDB;
+import com.sb.server.CashStreamingRequest;
+import io.grpc.Context;
 import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
 
-public class BankService extends BankServiceGrpc.BankServiceImplBase {
+import java.util.concurrent.TimeUnit;
+
+public class DeadlineService extends BankServiceGrpc.BankServiceImplBase {
     @Override
     public void getBalance(BalanceCheckRequest request, StreamObserver<Balance> responseObserver) {
 
         int accountNumber = request.getAccountNumber();
         Balance balance = Balance.newBuilder().setAmount(accountNumber * 10).build();
-
+        // simulate time-consuming call
+        Uninterruptibles.sleepUninterruptibly(3, TimeUnit.SECONDS);
         responseObserver.onNext(balance);
         // responseObserver.onNext(balance);
         // responseObserver.onNext(balance);
@@ -32,8 +39,16 @@ public class BankService extends BankServiceGrpc.BankServiceImplBase {
         // all the validation passed
         for (int i = 0; i < (amount/10); i++) {
             Money money = Money.newBuilder().setValue(10).build();
-            responseObserver.onNext(money);
-            BankDB.deductBalance(accountNumber, 10);
+            //simulate time-consuming
+            Uninterruptibles.sleepUninterruptibly(3, TimeUnit.SECONDS);
+            if(!Context.current().isCancelled()){
+                responseObserver.onNext(money);
+                System.out.println("Delivered $10");
+                BankDB.deductBalance(accountNumber, 10);
+            } else {
+                break;
+            }
+            System.out.println("Completed");
            /* try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
