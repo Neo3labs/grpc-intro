@@ -83,3 +83,10 @@ The following is a litmus test that may help you decide between __INVALID_ARGUME
 
  * We can intercept RPC's both at client and server side.
  * To handle Cross-cutting Concerns.
+
+## gRPC - Error Handling
+ * Error channel
+   * Status codes
+   * Metadata
+ * Data channel
+   * OneOf
