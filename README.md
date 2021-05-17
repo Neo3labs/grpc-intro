@@ -90,3 +90,9 @@ The following is a litmus test that may help you decide between __INVALID_ARGUME
    * Metadata
  * Data channel
    * OneOf
+   
+## gRPC - Executer
+   * CachedThreadPool - default
+   * directExecuter -> Better performance for non-bolcking app
+   * FixedThreadPool -> Prefered
+ 
