@@ -93,6 +93,6 @@ The following is a litmus test that may help you decide between __INVALID_ARGUME
    
 ## gRPC - Executer
    * CachedThreadPool - default
-   * directExecuter -> Better performance for non-bolcking app
+   * __directExecuter__ -> Better performance for non-bolcking app
    * FixedThreadPool -> Prefered
  
