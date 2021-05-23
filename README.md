@@ -1,5 +1,9 @@
 ## gRPC - Introduction
 
+gRPC is a robust open-source high-performance RPC framework released by Google in 2015. It is a standardized, general-purpose, and cross-platform RPC infrastructure that provides scalability, performance, and functionality to distributed applications.
+
+gRPC builds on that and provides more flexibility, scalability, and security to it. In gRPC, a client can execute or call a function on a server application on a different machine. The gRPC server exposes methods that can be called publicly, and the client uses a connection system to call those methods as if the methods locally reside in the client machine.
+
  * High-performance, open-source RPC framework.
  * Developed at Google.
  * Client app directly invokes Server method on a different machine.
